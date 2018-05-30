@@ -1,0 +1,26 @@
+#!/bin/bash
+echo ""
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo "\e[1;33m                         SSH Audit\e[0m"
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo ""
+echo "\e[1;31m                      Failed attemps\e[0m"
+echo ""
+cat /var/log/auth.log | grep Failed | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' |tail
+echo ""
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo ""
+echo "\e[1;32m                    Succesfull attemps\e[0m"
+echo ""
+cat /var/log/auth.log | grep Accepted | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' | tail
+echo ""
+echo ""
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo ""
+echo "\e[1;33m                 Established connections\e[0m"
+echo ""
+netstat -tnpa | grep 'ESTABLISHED.*sshd' | awk '{print "   "  $5 " " $6 " " $7 " " $8}'
+echo ""
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo "\e[33m---------------------------------------------------------\e[0m"
+echo ""
