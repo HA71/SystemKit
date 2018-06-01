@@ -7,13 +7,13 @@ printline;
 echo "";
 tput setaf 1; echo "                      Failed attemps"; tput sgr0;
 echo "";
-grep Failed /var/log/auth.log | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' | tail;
+grep Fail /var/log/auth.log | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' | tail;
 echo "";
 printline;
 echo "";
 tput setaf 2; echo "                    Succesfull attemps"; tput sgr0;
 echo ""
-grep Accepted /var/log/auth.log | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' | tail;
+grep Accep /var/log/auth.log | awk '{print "    " $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }' | tail;
 echo "";
 echo "";
 printline;

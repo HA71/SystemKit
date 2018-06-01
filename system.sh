@@ -1,6 +1,6 @@
 #!/bin/bash
 printline() { tput setaf 3; echo "---------------------------------------------------------"; tput sgr0; };
-ip=$(ifconfig | grep -A 1 'ens3' | tail -1 | cut -d ' ' -f 10);
+ip=$(ip -o addr | awk /'[0-9]{1,3}(\.[0-9]{1,3}){3}/{ print $2 "  -  " $4 }');
 echo "";
 printline;
 tput setaf 3; echo "                   System monitor"; tput sgr0;
